@@ -3,7 +3,7 @@ const updatePassword = async (passwordCurrent, password, passwordConfirm) => {
     try { 
         const res = await axios({
             method: 'PATCH',
-            url: 'http://localhost:3000/api/v1/users/updatePassword',
+            url: '/api/v1/users/updatePassword',
             data: {
                 passwordCurrent,
                 password,

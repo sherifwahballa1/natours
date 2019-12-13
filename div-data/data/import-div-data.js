@@ -22,13 +22,13 @@ mongoose
   //host DB
   //.connect(DB_Host);
   //local DB
- .connect(process.env.DATATBASE_LOCAL, {
+  .connect(process.env.DATATBASE_LOCAL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false
   })
   .then(() => {
-    console.log('Successfully connected');
+    ('Successfully connected');
   });
 
 // Read Json file
@@ -42,9 +42,11 @@ const reviews = JSON.parse(
 const importData = async () => {
   try {
     await Tour.create(tours);
-    await User.create(users, { validateBeforeSave: false });
+    await User.create(users, {
+      validateBeforeSave: false
+    });
     await Review.create(reviews);
-    console.log('Data Successfully Loaded!');
+    //console.log('Data Successfully Loaded!');
   } catch (err) {
     console.log(err);
   }
@@ -57,7 +59,7 @@ const deleteData = async () => {
     await Tour.deleteMany();
     await User.deleteMany();
     await Review.deleteMany();
-    console.log('Data Successfully Deleted!');
+    // console.log('Data Successfully Deleted!');
   } catch (err) {
     console.log(err);
   }

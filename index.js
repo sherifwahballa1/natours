@@ -6,6 +6,7 @@ const mongoSanitize = require('express-mongo-sanitize'); //for nosql injection
 const xxs = require('xss-clean'); //for injection
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const rateLimit = require('express-rate-limit'); // to prevent many of requests from the same ip and prevent from attakers
 const globalError = require('./controllers/errorController');
@@ -80,9 +81,11 @@ app.use(
 //test Middleware
 //create my simple middleware
 app.use((req, res, next) => {
-  console.log('Hello From the Middleware 😁');
+  //console.log('Hello From the Middleware 😁');
   next();
 });
+
+app.use(compression());
 
 //second my middleware add property to req object
 app.use((req, res, next) => {
